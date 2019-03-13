@@ -1,0 +1,243 @@
+Index: web/index.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- web/index.jsp	(date 1552428870000)
++++ web/index.jsp	(date 1552428870000)
+@@ -0,0 +1,21 @@
++<%--
++  Created by IntelliJ IDEA.
++  User: milkias
++  Date: 2019-03-11
++  Time: 22:29
++  To change this template use File | Settings | File Templates.
++--%>
++<%@ page contentType="text/html;charset=UTF-8" language="java" %>
++<html>
++  <head>
++    <title>$Title$</title>
++
++  </head>
++  <body>
++
++    <a href="/Support">Start CS-tech app</a>
++
++
++
++  </body>
++</html>
+Index: web/WEB-INF/web.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- web/WEB-INF/web.xml	(date 1552429963000)
++++ web/WEB-INF/web.xml	(date 1552429963000)
+@@ -0,0 +1,17 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
++         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
++         version="4.0">
++    <servlet>
++        <servlet-name>myservlet</servlet-name>
++        <servlet-class>HelloServlet</servlet-class>
++    </servlet>
++    <servlet-mapping>
++        <servlet-name>myservlet</servlet-name>
++        <url-pattern>/Support</url-pattern>
++    </servlet-mapping>
++
++</web-app>
++
++
+Index: web/WEB-INFForm/index2.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- web/WEB-INFForm/index2.jsp	(date 1552431705000)
++++ web/WEB-INFForm/index2.jsp	(date 1552431705000)
+@@ -0,0 +1,26 @@
++<%--
++  Created by IntelliJ IDEA.
++  User: milkias
++  Date: 2019-03-12
++  Time: 16:59
++  To change this template use File | Settings | File Templates.
++--%>
++<%@ page contentType="text/html;charset=UTF-8" language="java" %>
++<html>
++<head>
++    <title>Title</title>
++    <link href="${pageContext.request.contextPath}/WEB-INFForm/index2.css" type="text/css" rel="stylesheet" />
++</head>
++<body>
++</body>
++<h1> Submission</h1>
++<form method="post" action="/Support">
++<label>Name:<input type="text" name="name" id="name" ></label>
++<label>Email: <input type="email" name="email" id="email" placeholder="trmilkias@gmail.com"></label>
++<label>Problem <input type="text" name="prb" id="problem"></label>
++    <label>Problem Description <br><textarea  name="prbDescp" rows="10px"cols="20px"> </textarea></label>
++ <label>Help!!<input type="submit"></label>
++</form>
++
++</body>
++</html>
+Index: web/WEB-INFForm/index2.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- web/WEB-INFForm/index2.css	(date 1552431785000)
++++ web/WEB-INFForm/index2.css	(date 1552431785000)
+@@ -0,0 +1,18 @@
++ body{
++     position: center;
++     margin: 0.9%;
++     border: solid;
++     border-radius: 2%;
++     background: aliceblue;
++ }
++ h1{
++     text-align: center;
++     text-decoration: black;
++     font-weight: bold;
++ }
++ label{
++     display: block;
++
++
++
++ }
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- pom.xml	(date 1552361274000)
++++ pom.xml	(date 1552361274000)
+@@ -0,0 +1,46 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0"
++         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
++    <modelVersion>4.0.0</modelVersion>
++
++    <groupId>cs472.mum.edu</groupId>
++    <artifactId>hello-servlet</artifactId>
++    <version>1.0-SNAPSHOT</version>
++    <properties>
++        <maven.compiler.source>1.8</maven.compiler.source>
++        <maven.compiler.target>1.8</maven.compiler.target>
++    </properties>
++
++    <dependencies>
++        <dependency>
++            <groupId>javax.servlet</groupId>
++
++            <artifactId>javax.servlet-api</artifactId>
++            <version>3.1.0</version>
++            <scope>provided</scope>
++        </dependency>
++        <dependency>
++            <groupId>javax.el</groupId>
++            <artifactId>javax.el-api</artifactId>
++            <version>3.0.0</version>
++            <scope>provided</scope>
++        </dependency>
++        <!-- https://mvnrepository.com/artifact/jstl/jstl -->
++        <dependency>
++            <groupId>jstl</groupId>
++            <artifactId>jstl</artifactId>
++            <version>1.2</version>
++        </dependency>
++        <!--Required for Custom Tags -->
++        <dependency>
++            <groupId>javax.servlet.jsp</groupId>
++            <artifactId>javax.servlet.jsp-api</artifactId>
++            <version>2.3.1</version>
++            <scope>provided</scope>
++        </dependency>
++
++
++    </dependencies>
++
++</project>
+\ No newline at end of file
+Index: src/main/java/HelloServlet.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/HelloServlet.java	(date 1552431884000)
++++ src/main/java/HelloServlet.java	(date 1552431884000)
+@@ -0,0 +1,38 @@
++import javax.servlet.ServletException;
++import javax.servlet.http.HttpServlet;
++import javax.servlet.http.HttpServletRequest;
++import javax.servlet.http.HttpServletResponse;
++import java.io.PrintWriter;
++import java.math.*;
++import java.io.IOException;
++
++public class HelloServlet extends HttpServlet {
++    @Override
++    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
++        //  super.doGet(req, resp);
++        //resp.getWriter().println("Hello, World!");
++        req.getRequestDispatcher("/WEB-INFForm/index2.jsp").forward(req, resp);
++        PrintWriter out = resp.getWriter();
++
++//        out.print("<html><head><title>Test</title></head><body>");
++//        out.print("<form method='post'>");
++//        out.print("<p>Please click the button</p>");
++//       out.print("<input type='submit' value='Click me'/>");
++//        //out.print();
++//        out.print("</form>");
++//        out.print("</body></html>");
++//    }
++    }
++    @Override
++    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
++        //super.doPost(req, resp);
++        PrintWriter out = resp.getWriter();
++        out.print("<html><head><title>Test</title></head><body>");
++        out.print("<p> Thank you! "+req.getParameter("name") +"for contacting us. We should receive reply from us" +
++                " with in 24 hrs in your email address"+req.getParameter("email")+". Let us know in our support email"
++                +" mum.edu "+" "+"if you don’t receive reply within 24 hrs." +
++                " Please be sure to attach your reference " +" "+Math.random()+" in your email.</p>");
++        out.print("</body></html>");
++
++    }
++}
+Index: helloservlet.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- helloservlet.iml	(date 1552361356000)
++++ helloservlet.iml	(date 1552361356000)
+@@ -0,0 +1,19 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="JAVA_MODULE" version="4">
++  <component name="FacetManager">
++    <facet type="web" name="Web">
++      <configuration>
++        <descriptors>
++          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/web/WEB-INF/web.xml" />
++        </descriptors>
++        <webroots>
++          <root url="file://$MODULE_DIR$/web" relative="/" />
++        </webroots>
++        <sourceRoots>
++          <root url="file://$MODULE_DIR$/src/main/java" />
++          <root url="file://$MODULE_DIR$/src/main/resources" />
++        </sourceRoots>
++      </configuration>
++    </facet>
++  </component>
++</module>
+\ No newline at end of file
